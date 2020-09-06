@@ -40,9 +40,9 @@ public:
 /* The Adapter */
 class Adapter : public USASocketInterface
 {
-    EuropeanSocketInterface* socket;
-
 public:
+    Adapter(): socket(nullptr) {}
+
     void plugIn(EuropeanSocketInterface* outlet)
     {
         socket = outlet;
@@ -51,6 +51,9 @@ public:
     int voltage() { return 110; }
     Cable live() { return socket->live(); }
     Cable neutral() { return socket->neutral(); }
+
+private:
+    EuropeanSocketInterface* socket;
 };
 
 /* Client */
